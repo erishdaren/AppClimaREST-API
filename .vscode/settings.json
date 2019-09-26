@@ -1,0 +1,6 @@
+{
+    "editor.minimap.enabled": false,
+    "editor.autoClosingBrackets": "always",
+    "workbench.sideBar.location": "right",
+    "workbench.tree.renderIndentGuides": "always"
+}
