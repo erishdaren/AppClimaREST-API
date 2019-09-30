@@ -1,27 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import Formulario from './components/Formulario';
+import React,{Component} from 'react';
+import Error from './components/Error';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React es chido
-        </a>
-      </header>
-    </div>
-  );
+export default class Class extends Component {
+state = {
+  error: ''
 }
-
-
-export default App;
+componentDidMount() {
+  this.setState({
+    erro: false
+  })
+}
+  datosConsulta = respuesta => {
+    if (respuesta.ciudad === '' || respuesta.pais === '' ) {
+     this.setState({
+       error: true
+     })   
+    } else {
+      console.log('correcto');
+    }
+    
+  }
+    render() {
+      const error = this.state.error;
+      let resultado;
+      if (error) {
+        resultado = <Error mensaje="Ambos campos deben ser llenados !"/>
+      }
+        return (
+          <div className="App">
+          <Header 
+             title='Clima React' 
+          />
+     
+          <Formulario 
+          
+                datosConsulta={this.datosConsulta}     
+          />
+          {resultado}
+         
+         </div>
+        );
+    }
+}
