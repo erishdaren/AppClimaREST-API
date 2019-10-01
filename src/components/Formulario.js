@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 
-export default class Class extends Component {
+
+export default class Formulario extends Component {
 
 //Crear los refs para leer los datos del fomulario
 ciudadRef = React.createRef();
@@ -64,4 +66,7 @@ this.props.datosConsulta(respuesta)
             </div>
         );
     }
+}
+Formulario.propTypes = {
+    datosConsulta : PropTypes.func.isRequired
 }
